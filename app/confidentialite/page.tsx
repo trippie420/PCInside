@@ -1,0 +1,1 @@
+export default function Conf(){return <div className='prose prose-invert max-w-3xl'><h1>Politique de confidentialité</h1><p>À compléter.</p></div>}

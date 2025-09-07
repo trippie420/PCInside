@@ -1,0 +1,1 @@
+export default function CGV(){return <div className='prose prose-invert max-w-3xl'><h1>CGV</h1><p>À personnaliser.</p></div>}

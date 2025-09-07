@@ -1,0 +1,1 @@
+export default function ML(){return <div className='prose prose-invert max-w-3xl'><h1>Mentions légales</h1><p>À compléter.</p></div>}

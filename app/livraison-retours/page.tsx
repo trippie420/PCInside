@@ -1,0 +1,1 @@
+export default function LR(){return <div className='prose prose-invert max-w-3xl'><h1>Livraison & retours</h1><p>Délais & politique de retours.</p></div>}

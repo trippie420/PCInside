@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0a12;
+  --surface: #121026;
+  --muted: #a3a3b0;
+  --primary: #8b5cf6; /* violet */
+  --primary-2: #6d28d9; /* darker */
+  --accent: #22d3ee; /* cyan accent */
+}
+
+html, body { height: 100%; }
+body { background: radial-gradient(1200px 600px at 20% -10%, rgba(139,92,246,.18), transparent),
+                 radial-gradient(1000px 500px at 110% 10%, rgba(34,211,238,.12), transparent),
+                 var(--bg);
+       @apply text-white antialiased; }
+
+/* Reusable surfaces */
+.card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        @apply border border-white/10 rounded-2xl; }
+.glass { backdrop-filter: saturate(160%) blur(10px); background: rgba(18,16,38,.55); }
+.soft { background: #151332; }
+
+/* Buttons */
+.btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 8px 24px rgba(139,92,246,.25);
+  @apply text-white;
+}
+.btn-outline { @apply border border-white/15; background: rgba(255,255,255,0.03); }
+.btn-ghost { background: transparent; @apply border border-transparent; }
+
+.badge { @apply text-xs rounded-full px-2.5 py-1 border border-white/10 bg-white/5; }
+.chip { background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.35); @apply rounded-full text-xs px-2.5 py-1; }
+
+.input { @apply w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 outline-none focus:border-[var(--primary)]; }
+.select { @apply w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 outline-none focus:border-[var(--primary)]; }
+label { color: var(--muted); @apply text-sm; }
+hr { @apply border-white/10; }
+a { @apply hover:opacity-90; }
+
+/* Shadows & effects */
+.shadow-elev { box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); }
+.ring-primary { box-shadow: 0 0 0 1px rgba(139,92,246,.35); }
+
+/* Product grid cards */
+.prod-card { overflow: hidden; }
+.prod-img { position: relative; border-radius: 14px; overflow: hidden; }
+.prod-img img { transition: transform .5s ease; }
+.prod-card:hover .prod-img img { transform: scale(1.06); }
+.price { font-weight: 800; }
+.star { color: #fbbf24; }
+
+/* Navbar glass */
+.navbar { position: sticky; top: 0; z-index: 50; }
+.navbar-inner { @apply border-b border-white/10; background: rgba(18,16,38,.55); backdrop-filter: blur(10px); }
+.nav-link { @apply opacity-80; }
+.nav-link.active { opacity: 100; text-underline-offset: 6px; text-decoration: underline; text-decoration-color: rgba(139,92,246,.6); }
+
+
+/* ===== Skeletons ===== */
+.skel {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+  border-radius: 12px;
+}
+.skel::after {
+  content: "";
+  position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+.footer-grad { border-top: 1px solid rgba(255,255,255,.08); position: relative; }
+.footer-grad::before{
+  content:""; position:absolute; left:0; right:0; top:-1px; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(139,92,246,.6), rgba(34,211,238,.5), transparent);
+  filter: blur(.6px);
+}
+
+
+/* ==== Select dropdown visibility fix (Windows/Chrome, Firefox) ==== */
+.select, select {
+  color: #e5e7eb;                 /* text color in the closed select */
+  background-color: #151332;      /* closed select bg */
+  font-size: 0.95rem;
+  padding-top: 0.6rem; padding-bottom: 0.6rem;
+}
+/* dropdown list items */
+select option {
+  background-color: #151332;      /* dropdown bg (dark) */
+  color: #e5e7eb;                 /* dropdown text color */
+}
+/* High-contrast / Safari hints */
+select { color-scheme: dark; }
+/* Edge/Chromium highlight remains readable */
+select option:checked, select option:hover { background-color: #2a2650; color: #fff; }
+
+
+/* === Fond global corrigé (anti-bande) === */
+:root {
+  --bg: #0b0a10;
+  --surface: #12111a;
+  --primary: #7c3aed;
+}
+html, body {
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 600px at 50% 0%, rgba(124,58,237,0.12), transparent 70%) fixed,
+    linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%);
+  background-color: var(--bg);
+  background-repeat: no-repeat;
+  color: white;
+}
+.page-gradient,
+.section-gradient,
+.hero::before,
+.hero::after {
+  content: none !important;
+  display: none !important;
+}
+footer {
+  background: transparent !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+

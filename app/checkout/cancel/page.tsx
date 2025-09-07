@@ -1,0 +1,2 @@
+import Link from 'next/link'
+export default function Cancel(){return (<div className='card p-8 space-y-4 text-center max-w-xl mx-auto'><h1 className='text-2xl font-bold'>Paiement annulé</h1><p className='text-white/70'>Vous pouvez réessayer ou modifier votre panier.</p><Link href='/panier' className='btn btn-primary'>Retour au panier</Link></div>)}

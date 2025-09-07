@@ -1,0 +1,36 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Order {
+  id                    Int         @id @default(autoincrement())
+  number                String      @unique
+  status                String      @default("PENDING") // "PENDING" | "PAID" | "SHIPPED" | "DELIVERED" | "REFUNDED" | "CANCELED"
+  email                 String
+  pseudo                String?
+  total                 Int
+  createdAt             DateTime    @default(now())
+  paidAt                DateTime?
+  refundAt              DateTime?
+  items                 OrderItem[]
+  shippingAddress       String?
+  billingAddress        String?
+  stripeSessionId       String?
+  stripePaymentIntentId String?
+  trackingCode          String?
+}
+
+model OrderItem {
+  id        Int    @id @default(autoincrement())
+  orderId   Int
+  order     Order  @relation(fields: [orderId], references: [id])
+  productId String
+  title     String
+  price     Int
+  qty       Int
+}
